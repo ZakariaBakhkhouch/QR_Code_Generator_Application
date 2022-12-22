@@ -1,0 +1,34 @@
+﻿@model QRCodeApp.Models.QRCode;
+
+@{
+	Layout = "_Layout";
+	ViewBag.Title = "Create QR Code";
+}
+
+
+<h1>Create a QR Code :</h1>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="CreateQRCode">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="Text" class="control-label"></label>
+				<input asp-for="Text" class="form-control" />
+				<span asp-validation-for="Text" class="text-danger"></span>
+			</div>
+			<br />
+			<div class="from-group">
+				<input type="submit" value="Generate" class="btn btn-primary" />
+			</div>
+			<br />
+			<div class="from-group">
+				<img src="@ViewBag.QRCodeImage" class="img-thumbnail"/>
+			</div>
+		</form>
+	</div>
+</div>
+
+@section Scripts{
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
